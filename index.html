@@ -56,7 +56,7 @@
             display: inline-block;
             background: white;
             margin: 0 2px;
-            width: 25px;
+            width: 10px;
 
         }
     audio {
@@ -78,10 +78,10 @@
 
 <script>
 
-    (function () {
+    (window.onload = function () {
 
         // The number of bars that should be displayed
-        const NBR_OF_BARS = 50;
+        const NBR_OF_BARS = 99;
 
         // Get the audio element tag
         const audio = document.querySelector("audio");
@@ -96,10 +96,12 @@
         const analayzer = ctx.createAnalyser();
 
         // Connect the source, to the analyzer, and then back the the context's destination
+        // Kết nối nguồn, với bộ phân tích, sau đó trở lại đích của ngữ cảnh
         audioSource.connect(analayzer);
         audioSource.connect(ctx.destination);
 
         // Print the analyze frequencies
+        // In các tần số phân tích
         const frequencyData = new Uint8Array(analayzer.frequencyBinCount);
         analayzer.getByteFrequencyData(frequencyData);
         console.log("frequencyData", frequencyData);
